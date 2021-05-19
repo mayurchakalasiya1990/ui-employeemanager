@@ -1,0 +1,24 @@
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { LoginService } from "../service/login.service";
+
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor{
+    
+    constructor(private loginService:LoginService){}
+
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        //throw new Error("Method not implemented.");
+        let newReq=req;
+        let token=this.loginService.getToken();
+        console.log("Interceptor",token)
+        if(token!=null && token!=""){
+            newReq=newReq.clone({setHeaders:{Authorization:`Bearer ${token}`,'Content-Type':  'application/json',
+        }});
+        }
+        console.log('newReq:'+newReq.headers)
+        return next.handle(newReq);
+    }
+    
+}

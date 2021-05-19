@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" style="color:white;">Employee Manager</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+       <ul class="navbar-nav mr-auto">
+       </ul>
+       <form class="form-inline my-2 my-lg-0">
+            <a type="button" routerLink="/login" name="logIn" id="logIn" class="form-control mr-sm-2">Login</a>
+       </form>
+    </div>
+ </nav>
+
+<div class="bootstrap-wrapper">
+    
+    <div class="container mt">
+        <div class="row" >
+              <div class="col-sm-5 col-md-6 mx-auto">
+                  <div class="container text-center">
+                      <img class="img-flud" style="width:100px" src="/assets/login.png" alt="">
+                  </div>
+                 <h1 class="text-center">Login here</h1>   
+                 
+                 <form (ngSubmit)="onSubmit()">
+                    
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Username</mat-label>    
+                            <input required [(ngModel)]="credential.userName" name="userName" type="text" matInput class="full-width"/>
+                        </mat-form-field><br/>
+                    
+                     <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Password</mat-label>    
+                        <input required [(ngModel)]="credential.passWord" name="passWord" type="text" matInput class="full-width"/>
+                     </mat-form-field>
+                    
+                     <div class="container text-center">
+                           <button type="submit" mat-raised-button color="primary"> Login</button> 
+                           <button style="margin-left: 10px;" type="reset" mat-raised-button color="primary"> Reset</button> 
+                     </div>
+                 </form>
+              </div>  
+        </div>
+    </div>
+</div>
